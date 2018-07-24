@@ -11,8 +11,7 @@ const DIR_PATH = {
 
 module.exports = {
     entry: [
-        'react-hot-loader/patch',
-        './src/index.js'
+        path.join(DIR_PATH.SRC, 'index.js')
     ],
     output: {
         path: DIR_PATH.BUILD,
