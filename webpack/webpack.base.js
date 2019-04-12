@@ -29,15 +29,15 @@ module.exports = {
             // Options similar to the same options in webpackOptions.output
             // both options are optional
             filename: '[name].[hash].css'
-        }),
-        new CopyWebpackPlugin(
-            [{
-                from: DIR_PATH.SRC + '/static/',
-                to: '.', // root is build
-                toType: 'dir'
-            }],
-            { debug: 'warning' }
-        )
+        })
+        // new CopyWebpackPlugin(
+        //     [{
+        //         from: DIR_PATH.SRC + '/static/',
+        //         to: '.', // root is build
+        //         toType: 'dir'
+        //     }],
+        //     { debug: 'warning' }
+        // )
     ],
     module: {
         rules: [
