@@ -11,7 +11,7 @@ const DIR_PATH = {
 
 module.exports = {
     entry: [
-        path.join(DIR_PATH.SRC, 'index.js')
+        path.join(DIR_PATH.SRC, 'index.tsx')
     ],
     output: {
         path: DIR_PATH.BUILD,
@@ -37,8 +37,24 @@ module.exports = {
         //     { debug: 'warning' }
         // )
     ],
+    devtool: 'source-map',
     module: {
         rules: [
+            {
+                test: /\.ts(x?)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'ts-loader'
+                    }
+                ]
+            },
+            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                loader: 'source-map-loader'
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
@@ -57,12 +73,12 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader"
+                    'css-loader'
                 ]
             }
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx']
-    },
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx']
+    }
 };
