@@ -20,8 +20,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm audit
+    - name: npm install, audit
       run: |
+        npm install
         npm audit
       env:
         CI: true
